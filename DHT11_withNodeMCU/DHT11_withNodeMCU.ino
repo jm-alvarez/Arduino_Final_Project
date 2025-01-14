@@ -31,9 +31,9 @@
 #define DTYPE DHT11
 DHT dht(DPIN,DTYPE);
 
-#define HOST "localhost";
-#define ssid "DHT_WIFI";
-#define password "12345678";
+// #define HOST "localhost";
+// #define ssid "Your WiFi SSID";
+// #define password "Your WiFi password";
 
 String sendTemp, sendHum, postData;
 
@@ -55,7 +55,7 @@ void setup() {
   Serial.println("Communication started\n");
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin("DHT_WIFI","12345678");
+  WiFi.begin("Your WiFi SSID","Your WiFi Password"); // Change "Your Wifi SSID" with your wifi name; Also Change the password with you wifi's password;
   checkWiFiConnection();
 }
 
@@ -74,7 +74,7 @@ void loop() {
   postData = "sendTemp=" + sendTemp + "&sendHum=" + sendHum;
   Serial.print("Sending data: ");
   Serial.println(postData);
-  http.begin(client, "http://192.168.244.55/arduino/try.php");
+  http.begin(client, "http://your ip-address/dht_php/try.php");// Change 'your ip-address' in the link with your IP Address by running CMD then type ipconfig.
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
   int httpCode = http.POST(postData);

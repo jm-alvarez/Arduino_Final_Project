@@ -1,7 +1,7 @@
 <?php
     require("connection.php");
 
-    $q_data = $mysqli->query("SELECT * FROM tbl_iot");
+    $q_data = $mysqli->query("SELECT * FROM tbl_dht");
     $temperature = 0.0;
     $humidity = 0.0;
     while($f_data = $q_data->fetch_assoc()){
